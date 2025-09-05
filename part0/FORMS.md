@@ -45,7 +45,7 @@ sequenceDiagram
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate server
-    server-->>browser: HTML document; basically it reloaded the page so this and the next 2 requests are the same as in the beginning
+    server-->>browser: HTML document - basically it reloaded the page so this and the next 2 requests are the same as in the beginning;
     deactivate server
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
