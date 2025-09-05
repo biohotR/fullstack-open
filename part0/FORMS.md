@@ -4,8 +4,10 @@
 <form action="/my-handling-form-page" method="post">…</form>
 ```
 
-action - defines the location(URL) where the data will be sent
-method - which HTTP method to send the data with(get or post)
+## action
+defines the location(URL) where the data will be sent
+## method
+which HTTP method to send the data with(get or post)
 
 ```mermaid
 sequenceDiagram
@@ -35,4 +37,26 @@ sequenceDiagram
     deactivate server
 
     Note right of browser: The browser executes the callback function that renders the notes
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    activate server
+    server->>browser: code 301(redirect), the server asks the browser to perform a new redirect to the Location
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    activate server
+    server-->>browser: HTML document; basically it reloaded the page so this and the next 2 requests are the same as in the beginning
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate server
+    server-->>browser: the css file
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    activate server
+    server-->>browser: the JavaScript file
+    deactivate server
 ```
+
+post request from browser to server containing the text in the input field
